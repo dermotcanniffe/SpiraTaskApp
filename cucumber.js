@@ -1,4 +1,4 @@
-module.exports = {
-  default: '--publish-quiet'
-};
+"scripts": {
+  "test": "CUCUMBER_PUBLISH=false cucumber-js"
+}
 

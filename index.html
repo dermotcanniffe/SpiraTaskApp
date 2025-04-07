@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Spira Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+    .container {
+      padding: 10px;
+    }
+    .view-toggle button {
+      margin-right: 10px;
+    }
+    #today-view, #kanban-view {
+      display: none;
+    }
+    .active-view {
+      display: block;
+    }
+    .task-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px;
+      background-color: #f9f9f9;
+      cursor: move;
+    }
+    .kanban-container {
+      display: flex;
+    }
+    .kanban-column {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 5px;
+      min-height: 200px;
+    }
+  </style>
+  <!-- Quill CSS -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Spira Task Manager</h1>
+  </header>
+  <div class="container">
+    <div class="view-toggle">
+      <button id="today-btn">Today</button>
+      <button id="kanban-btn">Kanban</button>
+    </div>
+    <div id="today-view" class="active-view">
+      <h2>Today's Tasks</h2>
+      <div id="today-tasks"></div>
+    </div>
+    <div id="kanban-view">
+      <h2>Kanban Board</h2>
+      <div class="kanban-container">
+        <div class="kanban-column" id="todo-column">
+          <h3>To Do</h3>
+          <div class="task-list" id="todo-tasks"></div>
+        </div>
+        <div class="kanban-column" id="inprogress-column">
+          <h3>In Progress</h3>
+          <div class="task-list" id="inprogress-tasks"></div>
+        </div>
+        <div class="kanban-column" id="done-column">
+          <h3>Done</h3>
+          <div class="task-list" id="done-tasks"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Create / Edit Task</h2>
+      <form id="task-form">
+        <input type="hidden" id="task-id">
+        <div>
+          <label>Title:</label>
+          <input type="text" id="task-title" required>
+        </div>
+        <div>
+          <label>Description:</label>
+          <div id="editor-container" style="height: 150px;"></div>
+        </div>
+        <div>
+          <label>Deadline:</label>
+          <input type="datetime-local" id="task-deadline">
+        </div>
+        <div>
+          <label>Priority:</label>
+          <select id="task-priority">
+            <option value="low">Low</option>
+            <option value="normal" selected>Normal</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div>
+          <label>Status:</label>
+          <select id="task-status">
+            <option value="todo" selected>To Do</option>
+            <option value="inprogress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <button type="submit">Save Task</button>
+      </form>
+    </div>
+  </div>
+  <!-- Quill JS -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+{
+  "name": "spira-task-manager",
+  "version": "1.0.0",
+  "description": "Electron-based Task Manager with SpiraPlan REST integration and Cucumber testing support",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "cucumber-js"
+  },
+  "dependencies": {
+    "electron": "^25.0.0",
+    "node-fetch": "^2.6.1",
+    "npm": "^11.2.0",
+    "quill": "^2.0.3"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.0.0"
+  }
+}
